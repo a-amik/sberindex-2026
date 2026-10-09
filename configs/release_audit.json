@@ -1,0 +1,9 @@
+[
+  {"id": "cpi_spb_may", "region_key": "санкт", "period": "2024-05", "published_at": "2024-06-14T19:00:00+03:00", "url": "https://78.rosstat.gov.ru/storage/mediabank/26000124_052024.pdf", "date_source": "https://78.rosstat.gov.ru/news/document/238860", "table": "petersburg", "value_index": 4},
+  {"id": "cpi_kras_may", "region_key": "краснодарский", "period": "2024-05", "published_at": "2024-06-14", "url": "https://23.rosstat.gov.ru/storage/mediabank/Press03_0524_CENI.pdf", "table": "krasnodar", "value_index": 0},
+  {"id": "cpi_kras_june", "region_key": "краснодарский", "period": "2024-06", "published_at": "2024-07-10", "url": "https://23.rosstat.gov.ru/storage/mediabank/Press03_0624_CENI.pdf", "table": "krasnodar", "value_index": 0},
+  {"id": "cpi_kras_sept", "region_key": "краснодарский", "period": "2024-09", "published_at": "2024-10-11", "url": "https://23.rosstat.gov.ru/storage/mediabank/Press03_0924_CENI.pdf", "table": "krasnodar", "value_index": 0},
+  {"id": "cpi_adygea_june", "region_key": "адыгея", "period": "2024-06", "published_at": "2024-07-10", "url": "https://23.rosstat.gov.ru/storage/mediabank/Press79_0624_CENI.pdf", "table": "krasnodar", "value_index": 0},
+  {"id": "cpi_adygea_sept", "region_key": "адыгея", "period": "2024-09", "published_at": "2024-10-11", "url": "https://23.rosstat.gov.ru/storage/mediabank/Press79_0924_CENI.pdf", "table": "krasnodar", "value_index": 0},
+  {"id": "wage_udmurt_sept", "region_key": "удмуртская", "period": "2024-09", "published_at": "2024-11-28T14:19:00+03:00", "url": "https://18.rosstat.gov.ru/news_stat/document/249484", "table": "wage", "rounding_rubles": 1}
+]

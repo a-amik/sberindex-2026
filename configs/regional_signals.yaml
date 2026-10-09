@@ -1,0 +1,30 @@
+regional_signals:
+  base: panel_blend_ses_bytype
+  compare: [ensemble, chronos2_dev, lgbm]
+  first_origin: 2023-12
+  last_origin: 2024-11
+  selection_last_origin: 2024-04
+  selection_last_target: 2024-05
+  selection_max_step: 3
+  report_from: 2024-06
+  horizons: [1, 3, 6, 12]
+  ridge_alpha: 100.0
+  correction_cap: 0.15
+  strengths: [0.0, 0.25, 0.5, 1.0]
+  min_training_origins: 2
+  min_training_examples: 100
+  release_lags:
+    cpi: 2
+    wage: 3
+    weather: 2
+    news: 0
+  variants:
+    controls: {estimator: ridge, signals: []}
+    macro: {estimator: ridge, signals: [macro]}
+    weather: {estimator: ridge, signals: [weather]}
+    calendar: {estimator: ridge, signals: [calendar]}
+    news: {estimator: ridge, signals: [news]}
+    all_ridge: {estimator: ridge, signals: [macro, weather, calendar, news]}
+    all_lgbm: {estimator: lgbm, signals: [macro, weather, calendar, news]}
+  bootstrap: 2000
+  seed: 42

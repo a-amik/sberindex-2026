@@ -1,0 +1,43 @@
+/* Токены: каркас и поверхности — как у «Маршрута дня» (поверхность, линия,
+   наведение, выделение), цвет — из кита СберИндекса: зелёный и краски категорий. */
+@font-face { font-family: 'Golos Text'; font-weight: 400 600; font-display: swap; src: url(/fonts/golos-cyr.woff2) format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: 'Golos Text'; font-weight: 400 600; font-display: swap; src: url(/fonts/golos-latext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+20A0-20AB, U+20AD-20C0, U+2113, U+A720-A7FF; }
+@font-face { font-family: 'Golos Text'; font-weight: 400 600; font-display: swap; src: url(/fonts/golos-lat.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212, U+2215; }
+
+:root {
+  --font: 'Golos Text', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --rail: 76px; --top: 56px; --side: 340px; --sheet: 440px; --pnav: 0px;
+  --r: 14px; --r-m: 8px;
+  --page: #f5f6f7; --surface: #fff; --surface-2: #f5f6f7; --surface-3: #eceef1;
+  --line: rgba(19, 23, 27, .09); --line-2: rgba(19, 23, 27, .18);
+  --hover: rgba(19, 23, 27, .05); --hover-2: rgba(19, 23, 27, .09);
+  --sel: rgba(33, 160, 56, .13); --sel-2: rgba(33, 160, 56, .22);
+  --accent: #21A038; --accent-ink: #fff; --accent-press: #1a8a2f;
+  --text: #13171b; --text-2: #5a5f6b; --text-3: #8a8f99;
+  --blue: #2563eb; --blue-soft: rgba(37, 99, 235, .12);
+  --warn: #dc2626; --shift: #d97706; --ok: #16a34a;
+  --tip: #fff; --scrim: rgba(0, 0, 0, .32);
+  --shadow: 0 0 0 1px var(--line), 0 8px 24px rgba(0, 0, 0, .12);
+  --c-all: #5A5FED; --c-food: #993FFF; --c-health: #249C00; --c-cafe: #FA6208; --c-transport: #0091D8; --c-market: #DB1765;
+  --m-prophet: #8a8f99; --m-snaive: #d97706; --m-panel: #0091D8; --m-lgbm: #993FFF; --m-chronos: #DB1765; --m-ensemble: #21A038; --m-strict: #0b5e26;
+  --map-land: #e8ebef; --map-edge: rgba(19, 23, 27, .16); --map-nb: #f1f2f4;
+  --nl-bg: #0e1714; --nl-ink: #21A038;
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  --page: #0b100e; --surface: #141a19; --surface-2: #1b2221; --surface-3: #232b2a;
+  --line: rgba(255, 255, 255, .08); --line-2: rgba(255, 255, 255, .16);
+  --hover: rgba(255, 255, 255, .05); --hover-2: rgba(255, 255, 255, .09);
+  --sel: rgba(79, 208, 106, .14); --sel-2: rgba(79, 208, 106, .24);
+  --accent: #4fd06a; --accent-ink: #0b100e; --accent-press: #4fd06a;
+  --text: rgba(255, 255, 255, .92); --text-2: rgba(255, 255, 255, .62); --text-3: #7f8a95;
+  --blue: #6b9bff; --blue-soft: rgba(107, 155, 255, .16);
+  --warn: #f4515d; --shift: #f5a623; --ok: #4dca83;
+  --tip: #232b2a; --scrim: rgba(0, 0, 0, .5);
+  --shadow: 0 0 0 1px var(--line), 0 10px 30px rgba(0, 0, 0, .45);
+  --c-all: #868AFF; --c-food: #BE85FE; --c-health: #78FF4F; --c-cafe: #FF843C; --c-transport: #00D3FF; --c-market: #FF458F;
+  --m-prophet: #9aa3ad; --m-snaive: #f5a623; --m-panel: #00D3FF; --m-lgbm: #BE85FE; --m-chronos: #FF458F; --m-ensemble: #4fd06a; --m-strict: #a7f0b4;
+  --map-land: #1d2524; --map-edge: rgba(255, 255, 255, .14); --map-nb: #131817;
+  --nl-bg: #1d2533; --nl-ink: #4fd06a;
+  color-scheme: dark;
+}

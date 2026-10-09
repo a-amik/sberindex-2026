@@ -1,0 +1,26 @@
+regional_signals:
+  base: chronos2_dev
+  compare: [ensemble]
+  protocol: docs/regional_prospective_signals.md
+  first_origin: 2023-12
+  last_origin: 2024-11
+  selection_last_origin: 2024-04
+  selection_last_target: 2024-05
+  selection_max_step: 3
+  report_from: 2024-06
+  horizons: [1, 3, 6, 12]
+  ridge_alpha: 100.0
+  correction_cap: 0.15
+  strengths: [0.0, 0.25]
+  min_training_origins: 2
+  min_training_examples: 100
+  release_lags: {cpi: 2, wage: 3, weather: 2, news: 0, search: 1}
+  variants:
+    controls: {estimator: ridge, signals: []}
+    macro: {estimator: ridge, signals: [macro]}
+    search: {estimator: ridge, signals: [search]}
+    macro_search: {estimator: ridge, signals: [macro, search]}
+    events: {estimator: ridge, signals: [events]}
+    macro_events: {estimator: ridge, signals: [macro, events]}
+  bootstrap: 2000
+  seed: 42

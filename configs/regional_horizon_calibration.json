@@ -1,0 +1,16 @@
+{
+  "base": "chronos2_dev",
+  "corrections_run": "results/regional_signals_chronos",
+  "selection_last_target": "2024-05",
+  "selection_last_origin": "2024-04",
+  "report_from": "2024-06",
+  "groups": {"one": [1], "two_three": [2, 3]},
+  "variants": ["controls", "macro", "weather"],
+  "strengths": [0.25, 0.5, 1.0],
+  "minimum_regional_gain_pct": 1.0,
+  "minimum_active_origins": 2,
+  "maximum_municipal_loss_pct": 0.0,
+  "long_steps_strength": 0.0,
+  "bootstrap": 2000,
+  "seed": 42
+}

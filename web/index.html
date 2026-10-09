@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <script defer src="https://amik.am/chapp/pa.min.js" data-site="sberindex"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Неслучайные связи — прогноз расходов и шоки по МО</title>
+    <meta name="description" content="Прогноз безналичных расходов по муниципальным образованиям, ранние сигналы шоков и их связь с событиями." />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/golos-cyr.woff2" as="font" type="font/woff2" crossorigin />
+    <script src="/nl-loader.js"></script>
+    <style>
+      #boot { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #f5f6f7; color: #5a5f6b; font: 14px system-ui, sans-serif; }
+      [data-theme='dark'] #boot { background: #0b100e; color: rgba(255,255,255,.62); --nl-bg: #1d2533; --nl-ink: #4fd06a; }
+      #boot nl-loader { width: 88px; height: 88px; }
+    </style>
+    <script>try{var t=localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+  </head>
+  <body>
+    <div id="boot"><nl-loader variant="link" aria-label="Загружаем данные"></nl-loader>Загружаем данные</div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

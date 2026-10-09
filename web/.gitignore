@@ -1,0 +1,4 @@
+node_modules/
+dist/
+public/data/russia.json
+public/data/neighbours.json

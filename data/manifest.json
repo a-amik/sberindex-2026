@@ -1,0 +1,116 @@
+{
+  "data/external/sberindex/consumer-spending-growth.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/consumer-spending-growth",
+    "bytes": 14503,
+    "sha256": "ab9ab1f254caa67f5a98d2d9c64249b60258c1c1fa0ffbc7fc2158b5e25d15d6",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/consumer-spending.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/consumer-spending",
+    "bytes": 11541,
+    "sha256": "634829a2966b8a12e7689ec135db91fa1e877b2d2fc0e8a036c000f54f790ad1",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/consumper-spending-index-sa.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/consumper-spending-index-sa",
+    "bytes": 11106,
+    "sha256": "108996a0b674c0f8279fdc79070a7c32c4eb4ee9d7bfb705f7550f786957d8cc",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/inflyaciya-s-sezonnoj-korrektirovkoj.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/inflyaciya-s-sezonnoj-korrektirovkoj",
+    "bytes": 34003,
+    "sha256": "db95b06628296d5185aea2a9d81bb05a7b278d0c733eb0084badc5fa49f672a7",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/izmenenie-kolichestva-aktivnikh-torgovo-servisnikh-tochek-po-kategoriyam.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/izmenenie-kolichestva-aktivnikh-torgovo-servisnikh-tochek-po-kategoriyam",
+    "bytes": 30475,
+    "sha256": "1250e97303b5d0e48336ef022163acf40291860257256f68d31a688b71973f77",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/izmenenie-obema-fot.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/izmenenie-obema-fot",
+    "bytes": 31846,
+    "sha256": "4e1f6495491ed9d2e9bb19fd5b6dc66f3787c76b1979aa4fe47927606ffdb00a",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/kolichestvo-vnutrennikh-turistov.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/kolichestvo-vnutrennikh-turistov",
+    "bytes": 16505,
+    "sha256": "658f827504dce6fcecc7e7d71b26b29a5a32eab2d37b542485cf3ee70fc1a466",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/median-wages.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/median-wages",
+    "bytes": 18281,
+    "sha256": "768563f3a551dfef047d17c22b880c96601f6cad1622522e5c657623c7a08c12",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/oboroty-biznesa.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/oboroty-biznesa",
+    "bytes": 30721,
+    "sha256": "6b7cf41a384d0f5e27c400536260cd191fa029a15f419930ffee586f76bbda0e",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/real-key-interest-rate.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/real-key-interest-rate",
+    "bytes": 10475,
+    "sha256": "3a432333c2edfc623a1843da2d5adb4e947956b5df5b5c151a7c895c49558173",
+    "downloaded": "2026-10-03"
+  },
+  "data/external/sberindex/ver-izmenenie-trat-po-kategoriyam.parquet": {
+    "url": "https://sberindex.ru/api/sowa /dataset/v1/ver-izmenenie-trat-po-kategoriyam",
+    "bytes": 78419,
+    "sha256": "9ce267b5a33b237e53c985cb4270075afcfb67bbe5e75fcaadec6ff1425ec6d9",
+    "downloaded": "2026-10-03"
+  },
+  "data/raw/hackathon/connection.parquet": {
+    "url": "https://www.sberbank.com/common/img/uploaded/files/pdf/sberindex/hackathonlicence.zip",
+    "bytes": 21904682,
+    "sha256": "20cbd5213d3ac1d0a867f097b485431811614b283d7366eb5cba9f65dc80493d",
+    "downloaded": "2026-10-03"
+  },
+  "data/raw/hackathon/consumption.parquet": {
+    "url": "https://www.sberbank.com/common/img/uploaded/files/pdf/sberindex/hackathonlicence.zip",
+    "bytes": 2373939,
+    "sha256": "9833ddaaee7b2a182ed4cceeed16469031700ea87d508bd976150c6770ef8a61",
+    "downloaded": "2026-10-03"
+  },
+  "data/raw/hackathon/hackathonlicence.zip": {
+    "url": "https://www.sberbank.com/common/img/uploaded/files/pdf/sberindex/hackathonlicence.zip",
+    "bytes": 19603203,
+    "sha256": "a9f932ff4096a7df797d1547987937f34d3995ac445b4748177114488d12b010",
+    "downloaded": "2026-10-03"
+  },
+  "data/raw/hackathon/market_access.parquet": {
+    "url": "https://www.sberbank.com/common/img/uploaded/files/pdf/sberindex/hackathonlicence.zip",
+    "bytes": 25163,
+    "sha256": "434258afe322b7e6e6610b2552d129ae47094613de72dae3d13f6965a28d1dc1",
+    "downloaded": "2026-10-03"
+  },
+  "data/raw/hackathon/t_dict_municipal.rar": {
+    "url": "https://www.sberbank.com/common/files/t_dict_municipal.rar",
+    "bytes": 26925727,
+    "sha256": "319ed22684b77716641bc15b61f7325adc44e9fc47e9be2973d88412d27d21f5",
+    "downloaded": "2026-10-03"
+  },
+  "data/raw/hackathon/t_dict_municipal_districts.xlsx": {
+    "url": "https://www.sberbank.com/common/files/t_dict_municipal.rar",
+    "bytes": 322024,
+    "sha256": "4150658c3298fbc87ed79838f503f3a5b9a28da33257ff803c7d9231ddb775d6",
+    "downloaded": "2026-10-03"
+  },
+  "data/raw/hackathon/t_dict_municipal_districts_poly.gpkg": {
+    "url": "https://www.sberbank.com/common/files/t_dict_municipal.rar",
+    "bytes": 74334208,
+    "sha256": "e62027630d48e4a13f9b6d173dd074d7358706743fe859ca3b7fa30fefa9813a",
+    "downloaded": "2026-10-03"
+  },
+  "data/raw/hackathon/Данные_СберИндекс_лицензия.pdf": {
+    "url": "https://www.sberbank.com/common/img/uploaded/files/pdf/sberindex/hackathonlicence.zip",
+    "bytes": 538791,
+    "sha256": "030269e726f969250b911a1fcb72131a4b61c3952aad10c8470ce9c0736c472f",
+    "downloaded": "2026-10-03"
+  }
+}

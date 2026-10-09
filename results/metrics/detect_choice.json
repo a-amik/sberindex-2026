@@ -1,0 +1,16 @@
+{
+  "lead": "chronos",
+  "pair": [
+    "chronos",
+    "zscore"
+  ],
+  "thresholds": {
+    "zero": Infinity,
+    "zscore": 3.6233,
+    "panel": 5.4366,
+    "cusum": 7.4568,
+    "bocpd": 0.2617,
+    "forecast": 4.59,
+    "chronos": 2.02
+  }
+}

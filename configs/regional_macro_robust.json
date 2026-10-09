@@ -1,0 +1,26 @@
+{
+  "base": "chronos2_dev",
+  "first_origin": "2023-12",
+  "last_origin": "2024-11",
+  "selection_last_origin": "2024-04",
+  "selection_last_target": "2024-05",
+  "report_from": "2024-06",
+  "groups": {"one": [1], "two_three": [2, 3]},
+  "strengths": [0.125, 0.25, 0.5],
+  "minimum_regional_gain_pct": 1.0,
+  "maximum_municipal_loss_pct": 0.0,
+  "minimum_active_origins": 2,
+  "policies": {"standard": {"cpi": 2, "wage": 3}, "older": {"cpi": 3, "wage": 4}},
+  "variants": {
+    "controls": [],
+    "prices": ["prices"],
+    "income": ["income"],
+    "rate": ["rate"],
+    "prices_rate": ["prices", "rate"],
+    "income_rate": ["income", "rate"],
+    "macro": ["macro"],
+    "smooth": ["smooth"]
+  },
+  "bootstrap": 2000,
+  "seed": 42
+}

@@ -1,0 +1,8 @@
+**/node_modules
+web/dist
+data
+results
+reports
+.venv
+.git
+certs

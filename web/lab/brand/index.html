@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Неслучайные связи — знак и лоадер</title>
+<link rel="icon" href="/brand/mark.svg">
+<script src="/nl-loader.js"></script>
+<style>
+@font-face { font-family: 'Golos Text'; font-weight: 400 600; src: url(/fonts/golos-cyr.woff2) format('woff2'); unicode-range: U+0400-045F, U+2116; }
+@font-face { font-family: 'Golos Text'; font-weight: 400 600; src: url(/fonts/golos-lat.woff2) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+:root { --page: #f5f6f7; --card: #fff; --line: rgba(38,38,38,.1); --text: #262626; --text-2: #5a5f6b; --text-3: #8a8f99; --brand: #21A038; --chip: #eef0f3; --nl-bg: #0e1714; --nl-ink: #21A038; color-scheme: light; }
+html[data-theme="dark"] { --page: #0e1714; --card: #131824; --line: rgba(124,137,171,.2); --text: rgba(255,255,255,.9); --text-2: rgba(255,255,255,.62); --text-3: #7c89ab; --chip: rgba(124,137,171,.18); --nl-bg: #1d2533; --nl-ink: #4fd06a; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text); font: 400 14px/1.5 'Golos Text', system-ui, sans-serif; }
+main { max-width: 1180px; margin: 0 auto; padding: 32px 16px 80px; }
+header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+header img { width: 44px; height: 44px; }
+h1 { font-size: 26px; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: 19px; margin: 40px 0 6px; }
+.lead { color: var(--text-2); max-width: 760px; margin: 0 0 18px; }
+.sw { margin-left: auto; display: inline-flex; padding: 3px; border-radius: 12px; background: var(--chip); }
+.sw button { border: 0; background: none; color: var(--text-2); font: inherit; height: 30px; padding: 0 12px; border-radius: 9px; cursor: pointer; }
+.sw button[aria-pressed="true"] { background: var(--card); color: var(--text); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px; min-width: 0; }
+.card h3 { margin: 0 0 4px; font-size: 16px; }
+.card p { margin: 0 0 14px; color: var(--text-2); font-size: 13px; }
+.num { color: var(--text-3); font-weight: 500; margin-right: 6px; }
+.big { display: flex; align-items: center; justify-content: center; height: 150px; border-radius: 14px; background: var(--chip); margin-bottom: 14px; }
+.big svg { width: 104px; height: 104px; }
+.sizes { display: flex; align-items: flex-end; gap: 16px; margin-bottom: 14px; color: var(--text-3); font-size: 11px; }
+.sizes div { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.tab { display: flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px; border-radius: 10px 10px 0 0; background: var(--chip); width: max-content; max-width: 100%; font-size: 12.5px; }
+.tab svg { width: 16px; height: 16px; flex: none; }
+.plates { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.plates div { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 12px; font-weight: 600; font-size: 14px; }
+.plates svg { width: 28px; height: 28px; flex: none; }
+.pl-light { background: #fff; color: #262626; border: 1px solid rgba(38,38,38,.1); }
+.pl-dark { background: #0e1714; color: #fff; }
+.live { display: flex; align-items: center; justify-content: center; gap: 22px; height: 170px; border-radius: 14px; background: var(--chip); margin-bottom: 12px; }
+.live nl-loader { width: 96px; height: 96px; }
+.live .sm { width: 32px; height: 32px; }
+.board { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
+.board figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; color: var(--text-3); }
+.board nl-loader { width: 100%; height: auto; aspect-ratio: 1; }
+.use { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); margin-top: 12px; font-size: 13px; color: var(--text-2); }
+.use nl-loader { width: 28px; height: 28px; }
+.note { color: var(--text-3); font-size: 12.5px; margin-top: 18px; max-width: 760px; }
+@media (max-width: 900px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .board { grid-template-columns: repeat(4, minmax(0, 1fr)); } header { flex-wrap: wrap; } .sw { margin-left: 0; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="/brand/mark.svg" alt="">
+    <div><h1>Неслучайные связи</h1><div style="color:var(--text-3)">Знак приложения и лоадер · локальный стенд</div></div>
+    <div class="sw" role="group" aria-label="Тема"><button data-th="light" aria-pressed="true">Светлая</button><button data-th="dark">Тёмная</button></div>
+  </header>
+
+  <h2>Знак</h2>
+  <p class="lead">Буква «Н» собрана из узлов и связей. Связь между точками и есть то, что ищет сервис: какие сдвиги в расходах неслучайны и с какими событиями они связаны. Знак стоит значком вкладки, в колонке разделов и на экране запуска.</p>
+  <div class="grid" id="marks"></div>
+
+  <h2>Лоадер</h2>
+  <p class="lead">Лоадер — тот же знак в круге, как значок и экран запуска у «Маршрута дня». Три движения разной природы. Раскадровка снята той же функцией, что ведёт живой знак: восемь кадров одного круга.</p>
+  <div class="grid" id="loaders"></div>
+  <p class="note">При «меньше движения» в системе знак стоит собранным. Внутри кнопок лоадер не ставится: кнопка на время счёта говорит текстом. Лоадер — для экрана запуска и области, которая ждёт данных: карточка субъекта, прогон стенда.</p>
+</main>
+<script>
+// Знаки: одна функция на размер, чтобы большой знак и значок вкладки не расходились.
+const G = '#21A038'
+const node = (x, y, r, fill, core) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"/>` + (core ? `<circle cx="${x}" cy="${y}" r="${r * 0.4}" fill="${core}"/>` : '')
+const graph = (ink, core, w = 5, r = 5) =>
+  `<g stroke="${ink}" stroke-width="${w}" stroke-linecap="round"><path d="M20 17v30M44 17v30M20 32h24"/></g>` +
+  [[20, 17], [20, 32], [20, 47], [44, 17], [44, 32], [44, 47]].map(([x, y]) => node(x, y, r, ink, core)).join('')
+const MARKS = [
+  { name: 'Граф', text: 'Белый граф «Н» на зелёной плитке. Читается и в 16&nbsp;px: узлы сливаются в стойки, перекладина остаётся.',
+    svg: `<rect width="64" height="64" rx="15" fill="${G}"/>${graph('#fff', G)}` },
+  { name: 'Граф в шуме', text: 'Тёмная плитка, зелёный граф и случайные точки вокруг: связь выделена из шума. В 16&nbsp;px шум пропадает сам.',
+    svg: `<rect width="64" height="64" rx="15" fill="#0e1714"/>` + [[32, 9], [33, 55], [9, 26], [55, 40], [32, 23]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.2" fill="${G}" opacity=".55"/>`).join('') + graph(G, '#0e1714') },
+  { name: 'Созвездие', text: 'Другая мысль: из россыпи точек четыре связаны линией роста. Знак про прогноз, а не про букву.',
+    svg: `<rect width="64" height="64" rx="15" fill="${G}"/>` + [[14, 18], [50, 14], [24, 52], [40, 30], [52, 50]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.4" fill="#fff" opacity=".55"/>`).join('') +
+      `<path d="M12 46L26 36L38 40L52 20" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>` + [[12, 46], [26, 36], [38, 40], [52, 20]].map(([x, y]) => node(x, y, 4.6, '#fff', G)).join('') },
+]
+const svg = (s, size) => `<svg viewBox="0 0 64 64" width="${size}" height="${size}" aria-hidden="true">${s}</svg>`
+document.getElementById('marks').innerHTML = MARKS.map((m, i) => `
+  <section class="card">
+    <h3><span class="num">${i + 1}</span>${m.name}</h3><p>${m.text}</p>
+    <div class="big">${svg(m.svg, 104)}</div>
+    <div class="sizes">${[64, 32, 16].map((s) => `<div>${svg(m.svg, s)}${s}&nbsp;px</div>`).join('')}</div>
+    <div class="tab">${svg(m.svg, 16)}Неслучайные связи — карта</div>
+    <div class="plates"><div class="pl-light">${svg(m.svg, 28)}Неслучайные связи</div><div class="pl-dark">${svg(m.svg, 28)}Неслучайные связи</div></div>
+  </section>`).join('')
+
+const LOADERS = [
+  ['link', 'Из шума и импульс', 'Выбор: точки собираются из шума, импульс прочерчивает «Н» — вверх по левой стойке, через перекладину, по правой; граф держится, рассыпается, и круг повторяется. Стоит в сервисе.'],
+  ['noise', 'Из шума', 'Точки блуждают, собираются в «Н», связи чертятся, граф подержался и отпустил точки обратно. Порядок из хаоса — то, что делает сервис с рядами.'],
+  ['pulse', 'Импульс', 'Граф стоит тихо, по связям бежит сигнал: вверх по левой стойке, через перекладину, по правой. Как проезд по букве у «Маршрута дня».'],
+  ['wave', 'Пульс', 'Стойки стоят, перекладина колеблется сигналом и успокаивается в прямую связь. Шум затухает в связь — и снова.'],
+]
+document.getElementById('loaders').innerHTML = LOADERS.map(([v, name, text], i) => `
+  <section class="card">
+    <h3><span class="num">${i ? i : '★'}</span>${name}</h3><p>${text}</p>
+    <div class="live"><nl-loader variant="${v}"></nl-loader><nl-loader class="sm" variant="${v}"></nl-loader></div>
+    <div class="board">${Array.from({ length: 8 }, (_, k) => `<figure><nl-loader variant="${v}" t="${(k / 8 + 0.04).toFixed(3)}"></nl-loader>${k}/8</figure>`).join('')}</div>
+    <div class="use"><nl-loader variant="${v}"></nl-loader>Загружаем Республику Татарстан…</div>
+  </section>`).join('')
+
+document.querySelectorAll('.sw button').forEach((b) => b.addEventListener('click', () => {
+  document.documentElement.dataset.theme = b.dataset.th
+  document.querySelectorAll('.sw button').forEach((x) => x.setAttribute('aria-pressed', x === b))
+}))
+</script>
+</body>
+</html>

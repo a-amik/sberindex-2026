@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+data/raw/
+data/external/
+data/processed/
+data/ca-bundle.pem
+data/*.log
+results/forecasts/
+results/forecasts_grid/
+results/*.log
+data/weather-retry.sh

@@ -1,0 +1,153 @@
+# Пути, источники и параметры загрузки. Любой ключ переопределяется
+# из командной строки: --set data.raw=/tmp/raw
+
+paths:
+  raw: data/raw              # исходные файлы, как скачаны
+  external: data/external    # внешние ряды, приведённые к таблицам
+  processed: data/processed  # панель и признаки для моделей
+  manifest: data/manifest.json
+
+sources:
+  hackathon_zip: https://www.sberbank.com/common/img/uploaded/files/pdf/sberindex/hackathonlicence.zip
+  municipal_dict: https://www.sberbank.com/common/files/t_dict_municipal.rar
+  sberindex_api: https://sberindex.ru/api/sowa
+  rosstat: https://rosstat.gov.ru
+  key_rate: https://www.cbr.ru/hd_base/KeyRate/
+  calendar: https://isdayoff.ru/api/getdata
+  weather: https://power.larc.nasa.gov/api/temporal/monthly/point
+
+# Открытые ряды СберИндекса: имя набора в API и что в нём
+sberindex_datasets:
+  consumer-spending: расходы по регионам и РФ, с 12.2018
+  consumer-spending-growth: приросты расходов год к году
+  consumper-spending-index-sa: индекс реальных расходов с сезонной корректировкой
+  median-wages: медианная зарплата
+  izmenenie-obema-fot: изменение фонда оплаты труда
+  oboroty-biznesa: обороты бизнеса
+  inflyaciya-s-sezonnoj-korrektirovkoj: инфляция с сезонной корректировкой
+  real-key-interest-rate: реальная ключевая ставка
+  ver-izmenenie-trat-po-kategoriyam: недельные расходы по 46 категориям, % г/г
+  izmenenie-kolichestva-aktivnikh-torgovo-servisnikh-tochek-po-kategoriyam: активные торговые точки по 26 категориям
+  kolichestvo-vnutrennikh-turistov: внутренние туристы по 83 субъектам, % г/г
+  potrebitelskaya-aktivnost-po-kategoriyam-tovarov-v-razreze-vozrastov: потребительская активность по возрастам, РФ (слой возрастной активности, 24_age_signal.py)
+
+rosstat_files:
+  # раздел сайта и шаблон имени: в имени месяц публикации, берём свежий
+  cpi_regions: [/statistics/price, 'ipc_RF_fo_sub_\d{2}-\d{4}\.xlsx']
+  wages_regions: [/labor_market_employment_salaries, 'tab2-zpl_\d{2}-\d{4}\.xlsx']
+  population_mo: [/folder/12781, 'hisl_MO_01-01-\d{4}\.xlsx']
+  monotowns: [/folder/12781, 'popul_monogorod_01-01-\d{4}\.xlsx']
+
+calendar_years: [2022, 2023, 2024, 2025]
+weather:
+  years: [2018, 2024]
+  parameters: [T2M, PRECTOTCORR]
+  workers: 2   # NASA POWER отвечает 429 уже на шести потоках
+
+panel:
+  first: 2023-01
+  last: 2024-12
+  neighbours_k: 8          # соседей по автодороге на МО
+
+backtest:
+  first_origin: 2023-12    # скользящая точка прогноза, окно расширяется
+  last_origin: 2024-11
+  horizons: [1, 3, 6, 12]  # горизонт H — средняя ошибка по шагам 1…H
+  series: full             # full — только ряды с полной историей (12 096)
+  reference: prophet_default
+  bootstrap: 2000          # повторов блочного бутстрапа по целевым месяцам
+  seed: 42
+  workers: 10
+
+models:
+  snaive_growth:
+    months: 3              # темп роста г/г — среднее за последние месяцы
+    # где своего «года назад» ещё нет (точка 2023-12), берём темп РФ
+    # из ряда СберИндекса по ближайшей категории
+    national_type:
+      Все категории: Всего
+      Продовольствие: Продовольственные товары
+      Общественное питание: Общественное питание
+      Маркетплейсы: Непродовольственные товары
+      Здоровье: Всего
+      Транспорт: Услуги
+  lgbm_base: panel_blend_ses_bytype   # что поправляет бустинг
+  lgbm:
+    # Параметры бустинга выбраны scripts/38_lgbm_tune.py только по целям не позже мая 2024 года
+    # (окно отбора ансамбля); отчётное окно при выборе не участвует. Таблица перебора —
+    # results/metrics/lgbm_tuning.csv.
+    params: {objective: l1, learning_rate: 0.03, num_leaves: 31, min_data_in_leaf: 300,
+             feature_fraction: 0.6, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+             verbose: -1, num_threads: 8, seed: 42}
+    grid:                  # перебор вокруг params; остальное берётся из params
+      num_leaves: [7, 15, 31]
+      min_data_in_leaf: [300, 1000, 3000]
+      lambda_l2: [1.0, 10.0]
+  prophet:
+    # default — Prophet как есть: на истории короче двух лет он сам выключает
+    # годовую сезонность; вероятнее всего, так считает и базовая модель жюри
+    default: {}
+    yearly3_mult: {yearly_seasonality: 3, seasonality_mode: multiplicative}
+  prophet_grid:            # чувствительность к настройкам, на выборке рядов
+    # порядок 10 убран: 20 коэффициентов сезонности на 12—23 точках, Stan
+    # сходится в 20—100 раз дольше, а точность только падает (видно уже на 5);
+    # гибкий тренд (changepoint_prior_scale 0.5) убран по той же причине:
+    # 2—3 с на подгонку, около шести часов на выборку
+    sample_per_category: 200
+    configs:
+      default: {}
+      yearly3_add: {yearly_seasonality: 3}
+      yearly3_mult: {yearly_seasonality: 3, seasonality_mode: multiplicative}
+      yearly5_mult: {yearly_seasonality: 5, seasonality_mode: multiplicative}
+      yearly3_mult_flat: {yearly_seasonality: 3, seasonality_mode: multiplicative, growth: flat}
+      yearly3_mult_cp001: {yearly_seasonality: 3, seasonality_mode: multiplicative, changepoint_prior_scale: 0.01}
+      yearly3_log: {yearly_seasonality: 3, log: true}
+      yearly3_mult_prior1: {yearly_seasonality: 3, seasonality_mode: multiplicative, seasonality_prior_scale: 1}
+
+ensemble:
+  candidates: [panel_blend_ses_bytype, lgbm, chronos2_dev, panel_blend_sesseas_bytype]
+  # Окно отбора — все пары, чья цель наступила до отчётного окна: точки
+  # 2023-12…2024-04, цели не позже мая 2024 года. До 04.10.2026 отбор шёл
+  # по точкам апрель—май со всеми шагами до 6, то есть по целям до ноября,
+  # и пересекался с отчётным окном по целям.
+  select_last_target: 2024-05
+  report_from: 2024-06                 # отчётное окно — при выборе не видели
+  # Обязательные члены: состав и свёртка выбираются на окне отбора только
+  # среди сочетаний с ними. Chronos-2 добавлен 04.10.2026 по рекомендации
+  # судьи, уже после взгляда на отчётное окно — это сказано в отчёте;
+  # без этого правила отбор его не берёт (ensemble_selection_free.csv).
+  force_include: [chronos2_dev]
+
+detect:
+  methods: [zero, zscore, panel, cusum, bocpd, forecast, chronos]   # chronos — интервал Chronos-2, с 04.10.2026
+  share: 0.3                 # доля рядов с внесённым шоком
+  sizes: [0.1, 0.2, 0.3]     # величина шока, доля уровня (в логарифмах)
+  kinds: [step, ramp, spike] # ступенька, сдвиг за три месяца, выброс на месяц
+  first: 6                   # шоки и учёт тревог — с июля 2023 года
+  last: 21                   # последний месяц шока — октябрь 2024 года
+  max_delay: 2               # шок найден, если тревога не позже τ + 2
+  seed_tune: 1               # выборка для подбора порога
+  seed_test: 2               # выборка для отчёта
+  valve_share: 0.15          # тревог в группе за месяц больше — это шок группы, а не МО
+  pelt_pen: [3, 6, 10, 15]  # в единицах масштаба группы
+
+cases:
+  floods_2024:              # паводки весны 2024 года на Урале и в Западной Сибири
+    regions: [Оренбургская область, Курганская область, Тюменская область]
+    event: 2024-04
+    window: [2024-04, 2024-06]
+    before: [2024-01, 2024-03]
+
+early_warning:
+  first_target: 2024-01     # первый месяц, для которого предсказываем тревогу
+  top_k: 100                # «список на проверку» — сколько МО-рядов в нём
+
+news:
+  sources: [interfax, lenta]
+  start: 2022-12-01
+  end: 2024-12-31
+  pause: 0.3               # секунд между запросами одного потока
+  workers_per_source: 2    # потоков на ленту: около четырёх запросов в секунду к сайту
+
+news_eval:
+  min_disaster_news: 10    # событие — субъект-месяц, где о паводке или режиме ЧС не меньше 10 заголовков

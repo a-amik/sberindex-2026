@@ -1,0 +1,12 @@
+# docker compose up --build  →  http://localhost:8080/
+# Порт меняется переменной PORT, реестр базовых образов — REGISTRY.
+services:
+  web:
+    build:
+      context: .
+      args:
+        REGISTRY: ${REGISTRY:-docker.io/library}
+    image: sberindex-service:dev
+    ports:
+      - "${PORT:-8080}:8080"
+    restart: unless-stopped
